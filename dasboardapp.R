@@ -2,6 +2,7 @@
 library(shiny)
 library(shinydashboard)
 #analysis libraries
+library(DT)
 library(plotly)
 library(wordcloud2)
 library(ggplot2) # Data visualization
@@ -12,6 +13,7 @@ library(tidyr)
 library(tm)
 library(wordcloud)
 library(reshape2)
+library(datasets)
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ui <-dashboardPage(skin = "green",
@@ -25,8 +27,8 @@ ui <-dashboardPage(skin = "green",
     dropdownMenu(type = "tasks",
                  badgeStatus = "success",
                  taskItem(value = 85, color = "green","Documentation of the Project"),
-                 taskItem(value = 75, color = "yellow", "Project deployment"),
-                 taskItem(value = 80, color = "red","Overall project")
+                 taskItem(value = 45, color = "yellow", "Project deployment"),
+                 taskItem(value = 75, color = "red","Overall project")
                 )#end of tasks drop down
   ),
   dashboardSidebar(width=350,
@@ -43,17 +45,23 @@ ui <-dashboardPage(skin = "green",
   dashboardBody(
     tags$head(tags$style(HTML('
                              #logo{margin-left:100px;position:absolute;margin-top:280px;}
-                              #logo:hover{transform:scale(1.03);}'))),
+                              #logo:hover{transform:scale(1.03);}
+                              #dashboard{margin-left:300px;color:#343031}
+                              #line{color:black;width:600px;}
+                              tr{padding:50px;}'))),
     tabItems(
       tabItem(tabName="myDashboard",
-              h1("Welcome to ",strong("Recess-Group-24")," project")
+              h1(id="dashboard","Welcome to ",strong("Recess-Group-24")," project"),
+              box(title="Group-24 Software Egineer Members!",status=NULL,
+                  width=500,collapse="TRUE",height=550,
+                  tableOutput("table"))
     ),#end of the first dashboard tab information
     tabItem(tabName="sentiments",
             h2("Sentiments"),
             box("Negative",status="info",plotOutput("cloud"))
     ),#end of sentiments sub menu
     tabItem(tabName="wordclouds",
-            box("Word cloud for Episode",status="success",plotOutput("cloud"))
+            box("Word cloud for Episode",status="success",wordcloud2Output(outputId="cloud"))
             ),#end of wordclouds sub menu
     tabItem(tabName="charts",
             h2("Charts Panel"),
@@ -70,7 +78,8 @@ ui <-dashboardPage(skin = "green",
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 server <-function(input, output,session){
-  #load the datasets that are going to be used 
+  #load the datasets that are going to be used
+  members<-read.table('C:/Users/brand/OneDrive/Desktop/Recess Project Git/RecessGroup-24-2018-BSE2301/datasets/names.csv',sep=",",header=TRUE )
   ep4<-read.table('C:/Users/brand/OneDrive/Desktop/Recess Project Git/RecessGroup-24-2018-BSE2301/datasets/SW_EpisodeIV.txt')
   ep5<-read.table('C:/Users/brand/OneDrive/Desktop/Recess Project Git/RecessGroup-24-2018-BSE2301/datasets/SW_EpisodeV.txt')
   ep6<-read.table('C:/Users/brand/OneDrive/Desktop/Recess Project Git/RecessGroup-24-2018-BSE2301/datasets/SW_EpisodeVI.txt')
@@ -134,6 +143,7 @@ server <-function(input, output,session){
   df<-createterms(ep4$dialogue)
   
   output$cloud <-renderWordcloud2(wordcloud2(df,size=1,color="random-dark",fontFamily = 'Segoe UI' ))
+  output$table<-renderTable(head(members))
   
 }
 #end of server script of the project
