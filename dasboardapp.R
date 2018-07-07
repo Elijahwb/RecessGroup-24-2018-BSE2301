@@ -32,7 +32,7 @@ ui <-dashboardPage(skin = "green",
   dashboardSidebar(tags$head(tags$script(src="projectjs1.js")),
     sidebarMenu(
       menuItem("Dashboard",tabName ="myDashboard",icon=icon("dashboard")),
-      menuItem("Sentiment Analysis",tabName ="sentiment",icon=icon("comment")),
+      menuItem("Sentiment Analysis",tabName ="sentiments",icon=icon("comment")),
       menuItem("Word Clouds",tabName ="wordclouds",icon=icon("cloud")),
       menuItem("Charts",tabName ="charts",icon=icon("bar-chart-o")),
       menuItem("Characters in the movie",tabName ="characters",icon=icon("users")),
@@ -41,10 +41,27 @@ ui <-dashboardPage(skin = "green",
   ),
   #begining of the body of the application
   dashboardBody(
-    h1("Welcome to the ",strong("Recess Group 24")," System!"),
-    
-    box(title="Word Cloud",status="info",plotOutput(outputId ="wordcloud"))
+    tabItems(
+      tabItem(tabName="myDashboard",
+              h1("Welcome to ",strong("Recess-Group-24")," project")
+    ),#end of the first dashboard tab information
+    tabItem(tabName="sentiments",
+            h2("Sentiments"),
+            box("Negative",status="info",plotOutput("cloud"))
+    ),#end of sentiments sub menu
+    tabItem(tabName="wordclouds",
+            box("Word cloud for Episode",status="success",plotOutput("cloud"))
+            ),#end of wordclouds sub menu
+    tabItem(tabName="charts",
+            h2("Charts Panel"),
+            box("chart-1",status="warning",plotOutput("cloud"))
+    ),#end of charts sub menu
+    tabItem(tabName="characters",
+            h2("characters Panel"),
+            box("Number of Characters",status="danger",plotOutput("cloud"))
+    )#end of charts sub menu
   )#end of the body of the application
+)
 )
 #end of the user interface
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -110,18 +127,11 @@ server <-function(input, output,session){
     #return the dataframe 
     return(df)
   }
-  #end of the function
-  #pal <-brewer.pal(9,"Dark2")
-  #creating a word cloud
+  
   df<-createterms(ep4$dialogue)
   
+  output$cloud <-renderWordcloud2(wordcloud2(df,size=1,color="random-dark",fontFamily = 'Segoe UI' ))
   
-  
-  #figPath = system.file("examples/a.png",package = "wordcloud2")
-  
-  #output$my_wc  = renderWordcloud2(wordcloud2(df,size=1,color="random-dark",shape ="diamond", minSize = 0, gridSize = 0,fontFamily = 'Segoe UI' ))
-  output$wordcloud <-renderPlot(wordcloud2(df,size=1,color="random-dark",shape ="diamond",fontFamily = 'Segoe UI' ))
-  #my_wc2_clicked_word<-"this is Elijah."
 }
 #end of server script of the project
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
