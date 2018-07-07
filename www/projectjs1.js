@@ -1,5 +1,5 @@
-var logo = document.getElementsByTagName("img")[0];
+var logo = document.getElementById("logo")[0];
 
 logo.addEventListener('hover',()=>{
-	logo.setAttribute('src','');
-});
+	logo.src ="logo3.png"
+},false);

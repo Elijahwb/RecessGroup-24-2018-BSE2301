@@ -16,7 +16,7 @@ library(reshape2)
 
 ui <-dashboardPage(skin = "green",
   
-  dashboardHeader(title = "Recess-Group-24 System Functions", titleWidth = 450,
+  dashboardHeader(title = "STAR-WARS Dashboard",titleWidth=350, 
     dropdownMenu(type = "messages",
                  messageItem(from = "Recess-Group-24",message="Thank you for logging into our system."),
                  messageItem(from = "New user",message="No registration is needed.",icon = icon("thumbs-up"),time = "12:00"),
@@ -29,18 +29,21 @@ ui <-dashboardPage(skin = "green",
                  taskItem(value = 80, color = "red","Overall project")
                 )#end of tasks drop down
   ),
-  dashboardSidebar(tags$head(tags$script(src="projectjs1.js")),
+  dashboardSidebar(width=350,
     sidebarMenu(
       menuItem("Dashboard",tabName ="myDashboard",icon=icon("dashboard")),
       menuItem("Sentiment Analysis",tabName ="sentiments",icon=icon("comment")),
       menuItem("Word Clouds",tabName ="wordclouds",icon=icon("cloud")),
       menuItem("Charts",tabName ="charts",icon=icon("bar-chart-o")),
       menuItem("Characters in the movie",tabName ="characters",icon=icon("users")),
-      img(src="group24-3.png","",width='180',height='40',id="logo")
+      img(" ",src="logo2.png",id="logo")
     )#end of sidebar menu
   ),
   #begining of the body of the application
   dashboardBody(
+    tags$head(tags$style(HTML('
+                             #logo{margin-left:100px;position:absolute;margin-top:280px;}
+                              #logo:hover{transform:scale(1.03);}'))),
     tabItems(
       tabItem(tabName="myDashboard",
               h1("Welcome to ",strong("Recess-Group-24")," project")
@@ -67,10 +70,10 @@ ui <-dashboardPage(skin = "green",
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 server <-function(input, output,session){
-  #load the datasets that are going to be used
-  ep4<-read.table('C:/Users/brand/OneDrive/Desktop/text mining/corpus/SW_EpisodeIV.txt')
-  ep5<-read.table('C:/Users/brand/OneDrive/Desktop/text mining/corpus/SW_EpisodeV.txt')
-  ep6<-read.table('C:/Users/brand/OneDrive/Desktop/text mining/corpus/SW_EpisodeVI.txt')
+  #load the datasets that are going to be used 
+  ep4<-read.table('C:/Users/brand/OneDrive/Desktop/Recess Project Git/RecessGroup-24-2018-BSE2301/datasets/SW_EpisodeIV.txt')
+  ep5<-read.table('C:/Users/brand/OneDrive/Desktop/Recess Project Git/RecessGroup-24-2018-BSE2301/datasets/SW_EpisodeV.txt')
+  ep6<-read.table('C:/Users/brand/OneDrive/Desktop/Recess Project Git/RecessGroup-24-2018-BSE2301/datasets/SW_EpisodeVI.txt')
   #end of the loading of the datasets that are needed
   
   #creating a vector of words which are stopwords
