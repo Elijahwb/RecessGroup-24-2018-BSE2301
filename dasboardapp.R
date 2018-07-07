@@ -1,7 +1,7 @@
 library(shiny)
 library(shinydashboard)
 
-ui <-dashboardPage(skin = "yellow",
+ui <-dashboardPage(skin = "purple",
   
   dashboardHeader(title = "Recess-Group-24 System Functions", titleWidth = 450,
     dropdownMenu(type = "messages",
