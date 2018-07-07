@@ -1,3 +1,4 @@
+rm(list=ls())
 #user interface libraries
 library(shiny)
 library(shinydashboard)
@@ -33,7 +34,7 @@ ui <-dashboardPage(skin = "green",
   ),
   dashboardSidebar(width=350,
     sidebarMenu(
-      menuItem("Dashboard",tabName ="myDashboard",icon=icon("dashboard")),
+      menuItem("Home",tabName ="myDashboard",icon=icon("th")),
       menuItem("Sentiment Analysis",tabName ="sentiments",icon=icon("comment")),
       menuItem("Word Clouds",tabName ="wordclouds",icon=icon("cloud")),
       menuItem("Charts",tabName ="charts",icon=icon("bar-chart-o")),
@@ -43,18 +44,18 @@ ui <-dashboardPage(skin = "green",
   ),
   #begining of the body of the application
   dashboardBody(
-    tags$head(tags$style(HTML('
-                             #logo{margin-left:100px;position:absolute;margin-top:280px;}
-                              #logo:hover{transform:scale(1.03);}
-                              #dashboard{margin-left:300px;color:#343031}
-                              #line{color:black;width:600px;}
-                              tr{padding:50px;}'))),
+    tags$head(tags$style(
+                HTML('
+                     #logo{margin-left:100px;position:absolute;margin-top:260px;}
+                      #logo:hover{transform:scale(1.03);}
+                      #dashboard{margin-left:300px;color:#343031}
+                      #line{color:black;width:600px;}
+                      tr{padding:50px;}'))),
     tabItems(
       tabItem(tabName="myDashboard",
               h1(id="dashboard","Welcome to ",strong("Recess-Group-24")," project"),
-              box(title="Group-24 Software Egineer Members!",status=NULL,
-                  width=500,collapse="TRUE",height=550,
-                  tableOutput("table"))
+              box(title="Group-24 Software Egineer Members!",width=500,height=490,
+                  DT::dataTableOutput("table1"))
     ),#end of the first dashboard tab information
     tabItem(tabName="sentiments",
             h2("Sentiments"),
@@ -143,7 +144,7 @@ server <-function(input, output,session){
   df<-createterms(ep4$dialogue)
   
   output$cloud <-renderWordcloud2(wordcloud2(df,size=1,color="random-dark",fontFamily = 'Segoe UI' ))
-  output$table<-renderTable(head(members))
+  output$table1<-DT::renderDataTable({DT=members})
   
 }
 #end of server script of the project
