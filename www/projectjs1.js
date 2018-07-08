@@ -1,5 +1,3 @@
-var logo = document.getElementById("logo")[0];
-
-logo.addEventListener('hover',()=>{
-	logo.src ="logo3.png"
-},false);
+$("#logo img").on('mouseover',function(event){
+	$(this).attr("src","logo3.png");
+});
