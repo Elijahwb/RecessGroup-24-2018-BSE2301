@@ -42,7 +42,7 @@ shinyUI(dashboardPage(skin = "yellow",
               tags$script(src="projectjs1.js")),
     tabItems(
       tabItem(tabName="myDashboard",
-              img(" ",src="starwars2.png",id="logo2"),
+              img(" ",src="starwars3.png",id="logo2"),
               h1(id="dashboard","Welcome to ",strong("Recess-Group-24")," project"),
               tags$div(id="black-box",box(title="Group-24 Software Engineer Members!",height=300,status="success",
                   tableOutput("table1"))),
