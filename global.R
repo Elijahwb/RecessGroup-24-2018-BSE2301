@@ -15,3 +15,13 @@ library(tm)
 library(wordcloud)
 library(reshape2)
 library(datasets)
+
+#load the datasets that are going to be used
+ep4<-read.table('C:/Users/brand/OneDrive/Desktop/text mining/corpus/SW_EpisodeIV.txt')
+ep5<-read.table('C:/Users/brand/OneDrive/Desktop/text mining/corpus/SW_EpisodeV.txt')
+ep6<-read.table('C:/Users/brand/OneDrive/Desktop/text mining/corpus/SW_EpisodeVI.txt')
+#end of the loading of the datasets that are needed
+
+
+
+

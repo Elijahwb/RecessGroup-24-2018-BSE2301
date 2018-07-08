@@ -1,20 +1,6 @@
-rm(list=ls())
 #user interface libraries
 library(shiny)
 library(shinydashboard)
-#analysis libraries
-library(DT)
-library(plotly)
-library(wordcloud2)
-library(ggplot2) # Data visualization
-library(readr) # CSV file I/O, e.g. the read_csv function
-library(dplyr)
-library(tidytext)
-library(tidyr)
-library(tm)
-library(wordcloud)
-library(reshape2)
-library(datasets)
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 shinyUI(dashboardPage(skin = "green",
@@ -58,20 +44,28 @@ shinyUI(dashboardPage(skin = "green",
                   tableOutput("table1")),
               verbatimTextOutput(outputId = "first")
     ),#end of the first dashboard tab information
+    
+    
     tabItem(tabName="sentiments",
             h2("Sentiments"),
-            box("Negative",status="info",plotOutput("cloud"))
+            box("Negative",status="info",plotOutput("senti1"))
     ),#end of sentiments sub menu
+    
+    
     tabItem(tabName="wordclouds",
-            box("Word cloud for Episode",status="success",wordcloud2Output(outputId="cloud"))
+            box("Word cloud for Episode",status="success",wordcloud2Output(outputId="cloud"),width=500,height=550)
             ),#end of wordclouds sub menu
+    
+    
     tabItem(tabName="charts",
             h2("Charts Panel"),
-            box("chart-1",status="warning",plotOutput("cloud"))
+            box("chart-1",status="warning",plotOutput("chart1"))
     ),#end of charts sub menu
+    
+    
     tabItem(tabName="characters",
             h2("characters Panel"),
-            box("Number of Characters",status="danger",plotOutput("cloud"))
+            box("Number of Characters",status="danger",plotOutput("characters"))
     )#end of charts sub menu
   )#end of the body of the application
 )
