@@ -20,7 +20,3 @@ ep4<-read.table('C:/Users/brand/OneDrive/Desktop/text mining/corpus/SW_EpisodeIV
 ep5<-read.table('C:/Users/brand/OneDrive/Desktop/text mining/corpus/SW_EpisodeV.txt')
 ep6<-read.table('C:/Users/brand/OneDrive/Desktop/text mining/corpus/SW_EpisodeVI.txt')
 #end of the loading of the datasets that are needed
-
-
-
-

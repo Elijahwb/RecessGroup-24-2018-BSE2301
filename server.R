@@ -57,9 +57,41 @@ shinyServer(
       #return the dataframe 
       return(df)
     }
+    createtermsAscending <- function(text){
+      #creating createterms function , it takes text column as input and gives a dataframe with term and term frequency as outut  
+      
+      #creating a corpus from the text column 
+      df_corpa <- VCorpus(VectorSource(text))  
+      
+      #Cleaning the corpus using the cleancorpus function
+      df_corp_cleana <- cleancorpus(df_corpa)
+      
+      #Creating a  term document matrix
+      df_tdma <- TermDocumentMatrix(df_corp_cleana)
+      
+      #Removing sparse terms from the TermDocumentMatrix
+      df_tdma <- removeSparseTerms(df_tdma,sparse = 0.99)
+      
+      #Converting the TermDocumentMatrix to a Matrix in R
+      df_ma <- as.matrix(df_tdma)
+      
+      #convering matrix to data frame with terms and term frequency  
+      word_freqa = sort(rowSums(df_ma), decreasing=F)
+      
+      dfA <- data.frame(word = names(word_freqa),freq = word_freqa)
+      
+      
+      #return the dataframe 
+      return(dfA)
+    }
 #:::::::::::::::::::::::::::::::::::::::::::::::END OF GLOBAL FUNCTIONS & OBJECTS::::::::::::::::::::::::::::::::::::::::::::
+    
     df<-createterms(ep4$dialogue)
-    output$cloud1<-renderWordcloud2(wordcloud2(df,color="random-dark",shape ="circle", minSize = 0, gridSize = 0,
+    dfAscending<-createtermsAscending(ep4$dialogue)
+    output$cloud11<-renderWordcloud2(wordcloud2(dfAscending,color="random-dark",shape ="circle", minSize = 0, gridSize = 0,
+                                                fontFamily = 'Segoe UI' ))
+    
+    output$cloud01<-renderWordcloud2(wordcloud2(df,color="random-dark",shape ="diamond", minSize = 0, gridSize = 0,
                                               fontFamily = 'Segoe UI' ))
     
     #converting columns to character

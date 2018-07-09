@@ -69,10 +69,10 @@ shinyUI(dashboardPage(skin = "yellow",
                    tabPanel("Episode IV",height="200px",
                             tags$div(id="cloud-output",
                                      box(h2("Most occurring words in Episode IV"),status="warning",
-                                         wordcloud2Output(outputId="cloud1"),width=300)
+                                         wordcloud2Output(outputId="cloud01"),width=300)
                    ),tags$div(id="cloud-output",
                               box(h2("Least occurring words in Episode IV"),status="warning",
-                                  wordcloud2Output(outputId="cloud1-1"),width=300)
+                                  wordcloud2Output(outputId="cloud11"),width=300)
                    ),br(),br()),
                    tabPanel("Episode V",height="200px",
                             tags$div(id="cloud-output",
