@@ -88,7 +88,7 @@ shinyServer(
     
     df<-createterms(ep4$dialogue)
     dfAscending<-createtermsAscending(ep4$dialogue)
-    output$cloud11<-renderWordcloud2(wordcloud2(dfAscending,color="random-dark",shape ="circle", minSize = 0, gridSize = 0,
+    output$cloud1_1<-renderWordcloud2(wordcloud2(dfAscending,color="random-dark",shape ="circle", minSize = 0, gridSize = 0,
                                                 fontFamily = 'Segoe UI' ))
     
     output$cloud01<-renderWordcloud2(wordcloud2(df,color="random-dark",shape ="diamond", minSize = 0, gridSize = 0,
@@ -121,7 +121,9 @@ shinyServer(
     df_ep5<-createterms(ep5$dialogue)
     output$cloud2<-renderWordcloud2(wordcloud2(df_ep5,color="random-dark",shape ="circle", minSize = 0, gridSize = 0,
                                                fontFamily = 'Segoe UI' ))
-    
+    dfAscending5<-createtermsAscending(ep5$dialogue)
+    output$cloud2_2<-renderWordcloud2(wordcloud2(dfAscending5,color="random-dark",shape ="circle", minSize = 0, gridSize = 0,
+                                                 fontFamily = 'Segoe UI' ))
     #converting columns to character
     ep5$character <- as.character(ep5$character)
     ep5$dialogue <- as.character(ep5$dialogue)
@@ -148,7 +150,9 @@ shinyServer(
     df_ep6<-createterms(ep6$dialogue)
     output$cloud3<-renderWordcloud2(wordcloud2(df_ep6,color="random-dark",shape ="circle", minSize = 0, gridSize = 0,
                                                fontFamily = 'Segoe UI' ))
-    
+    dfAscending6<-createtermsAscending(ep6$dialogue)
+    output$cloud3_3<-renderWordcloud2(wordcloud2(dfAscending6,color="random-dark",shape ="circle", minSize = 0, gridSize = 0,
+                                                 fontFamily = 'Segoe UI' ))
     #converting columns to character
     ep6$character <- as.character(ep6$character)
     ep6$dialogue <- as.character(ep6$dialogue)

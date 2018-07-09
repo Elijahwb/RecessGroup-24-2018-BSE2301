@@ -16,7 +16,9 @@ shinyUI(dashboardPage(skin = "yellow",
   dashboardSidebar(width=350,
     sidebarMenu(
       menuItem("Home",tabName ="myDashboard",icon=icon("th")),
-      menuItem("Word Clouds",tabName ="wordclouds",icon=icon("cloud")),
+      menuItem("Word Clouds",tabName ="wordclouds",icon=icon("cloud"),
+               menuSubItem("Most spoken words",tabName = "highfrequency"),
+               menuSubItem("Less spoken words",tabName = "lowfrequency")),
       menuItem("Sentiment Analysis",tabName ="sentiments",icon=icon("comment")),
       menuItem("Dialogue Charts",tabName ="charts",icon=icon("bar-chart-o"),
                menuSubItem("Episode IV",tabName = "chartepisode4"),
@@ -63,16 +65,13 @@ shinyUI(dashboardPage(skin = "yellow",
     ),#*****************************************end of sentiment tabsets information******************************************
     
     
-    tabItem(tabName="wordclouds",icon=icon("cloud"),
+    tabItem(tabName="highfrequency",icon=icon("cloud"),
             h1(id="dashboard","Wordcloud Panel"),
             tabBox(id="tab2",title="Frequency of words",width = "600",
                    tabPanel("Episode IV",height="200px",
                             tags$div(id="cloud-output",
                                      box(h2("Most occurring words in Episode IV"),status="warning",
                                          wordcloud2Output(outputId="cloud01"),width=300)
-                   ),tags$div(id="cloud-output",
-                              box(h2("Least occurring words in Episode IV"),status="warning",
-                                  wordcloud2Output(outputId="cloud11"),width=300)
                    ),br(),br()),
                    tabPanel("Episode V",height="200px",
                             tags$div(id="cloud-output",
@@ -86,9 +85,24 @@ shinyUI(dashboardPage(skin = "yellow",
                             tags$div(id="cloud-output",
                                      box(h2("Most occurring words in Episode VI"),status="warning",
                                          wordcloud2Output(outputId="cloud3"),width=300)
-                            ),tags$div(id="cloud-output",
-                                       box(h2("Least occurring words in Episode VI"),status="warning",
-                                           wordcloud2Output(outputId="cloud3-2"),width=300)
+                            ))),br(),br(),br(),br()),
+    tabItem(tabName="lowfrequency",icon=icon("cloud"),
+            h1(id="dashboard","Wordcloud Panel"),
+            tabBox(id="tab2",title="Frequency of words",width = "600",
+                   tabPanel("Episode IV",height="200px",
+                            tags$div(id="cloud-output",
+                                     box(h2("Least occurring words in Episode IV"),status="warning",
+                                         wordcloud2Output(outputId="cloud1_1"),width=300)
+                            ),br(),br()),
+                   tabPanel("Episode V",height="200px",
+                            tags$div(id="cloud-output",
+                                     box(h2("Least occurring words in Episode V"),status="warning",
+                                         wordcloud2Output(outputId="cloud2_2"),width=300)
+                            )),
+                   tabPanel("Episode VI",height="200px",
+                            tags$div(id="cloud-output",
+                                     box(h2("Least occurring words in Episode VI"),status="warning",
+                                         wordcloud2Output(outputId="cloud3_3"),width=300)
                             ))),br(),br(),br(),br()),
     #******************************************end of word clouds sub-items***************************************************
     
