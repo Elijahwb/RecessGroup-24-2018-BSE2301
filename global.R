@@ -13,7 +13,6 @@ library(tidyr)
 library(tm)
 library(wordcloud)
 library(reshape2)
-library(datasets)
 
 #load the datasets that are going to be used
 members<-read.table('C:/Users/brand/OneDrive/Desktop/Recess Project Git/RecessGroup-24-2018-BSE2301/datasets/names.csv',sep=",",header=TRUE )

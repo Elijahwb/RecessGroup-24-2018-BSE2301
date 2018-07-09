@@ -12,7 +12,7 @@ shinyUI(dashboardPage(skin = "yellow",
                  taskItem(value = 45, color = "yellow", "Project deployment"),
                  taskItem(value = 75, color = "red","Overall project")
                 )#end of tasks drop down
-  ),
+  ),#***********************************************end of Notifications******************************************************
   dashboardSidebar(width=350,
     sidebarMenu(
       menuItem("Home",tabName ="myDashboard",icon=icon("th")),
@@ -27,10 +27,11 @@ shinyUI(dashboardPage(skin = "yellow",
                menuSubItem("Episode V",tabName = "cepisode5"),
                menuSubItem("Episode VI",tabName = "cepisode6")),
       img(id="logo",src="logo2.png")
-    )#end of sidebar menu
+    )#***********************************************end of sidebar menu******************************************************
   ),
   #begining of the body of the application
   dashboardBody(
+    #******************************************beginning of the styles sheet**************************************************
     tags$head(tags$style(
                 HTML('
                      #logo{margin-left:100px;position:fixed;margin-top:260px;}
@@ -40,8 +41,8 @@ shinyUI(dashboardPage(skin = "yellow",
                       #line{color:black;width:600px;}
                       tr{padding:50px;}
                     #black-box{margin-left:220px;width:1200px;}
-                    
                      cloud-output{border-radius:5px;}')),
+    #************************************************end of the styles sheet**************************************************
               tags$script(src="projectjs1.js")),
     tabItems(
       tabItem(tabName="myDashboard",
@@ -50,7 +51,7 @@ shinyUI(dashboardPage(skin = "yellow",
               tags$div(id="black-box",box(title="Group-24 Software Engineer Members!",height=250,status="warning",
                   tableOutput("table1"))),
               verbatimTextOutput(outputId = "first")
-    ),#end of the first dashboard tab information
+    ),#*****************************************end of homepage for the dashboard*********************************************
     
     
     tabItem(tabName="sentiments",
@@ -59,7 +60,7 @@ shinyUI(dashboardPage(skin = "yellow",
                    tabPanel("Episode IV",plotOutput("sentiment1")),
                    tabPanel("Episode V"),
                    tabPanel("Episode VI"))
-    ),#end of sentiments tabsets
+    ),#*****************************************end of sentiment tabsets information******************************************
     
     
     tabItem(tabName="wordclouds",icon=icon("cloud"),
@@ -89,7 +90,7 @@ shinyUI(dashboardPage(skin = "yellow",
                                        box(h2("Least occurring words in Episode VI"),status="warning",
                                            wordcloud2Output(outputId="cloud3-2"),width=300)
                             ))),br(),br(),br(),br()),
-    
+    #******************************************end of word clouds sub-items***************************************************
     
     tabItem(tabName="chartepisode4",
             h1(id="dashboard","Charts Panel"),
@@ -100,7 +101,7 @@ shinyUI(dashboardPage(skin = "yellow",
     ),tabItem(tabName="chartepisode6",
               h1(id="dashboard","Charts Panel"),
               box("chart-1",status="warning",plotlyOutput("chart3"),width="600",height="500",background = "yellow")
-    ),#end of charts sub menu
+    ),#*************************************end of dialogue charts sub-items**************************************************
     
     
     tabItem(tabName="cepisode4",
@@ -123,9 +124,9 @@ shinyUI(dashboardPage(skin = "yellow",
                 h2("Character names"),br(),
                 verbatimTextOutput("characterNames6"),
                 verbatimTextOutput("information6"),background="yellow")
-    )#end of characters sub menu
-  )#end of the body of the application
-)
+    )#*******************************************end of characters sub-items**************************************************
+  )#***************************************************end of tab items*******************************************************
+)#*************************************************end of dashboard body******************************************************
 ))
 #end of the user interface
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::

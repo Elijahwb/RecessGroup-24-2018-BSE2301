@@ -57,6 +57,7 @@ shinyServer(
       #return the dataframe 
       return(df)
     }
+#:::::::::::::::::::::::::::::::::::::::::::::::END OF GLOBAL FUNCTIONS & OBJECTS::::::::::::::::::::::::::::::::::::::::::::
     df<-createterms(ep4$dialogue)
     output$cloud1<-renderWordcloud2(wordcloud2(df,color="random-dark",shape ="circle", minSize = 0, gridSize = 0,
                                               fontFamily = 'Segoe UI' ))
