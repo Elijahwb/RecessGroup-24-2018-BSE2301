@@ -19,7 +19,10 @@ shinyUI(dashboardPage(skin = "yellow",
       menuItem("Word Clouds",tabName ="wordclouds",icon=icon("cloud"),
                menuSubItem("Most spoken words",tabName = "highfrequency"),
                menuSubItem("Less spoken words",tabName = "lowfrequency")),
-      menuItem("Sentiment Analysis",tabName ="sentiments",icon=icon("comment")),
+      menuItem("Sentiment Analysis",tabName ="sentiments",icon=icon("comment"),
+               menuSubItem("Negative/Positive words",tabName = "negativePositive"),
+               menuSubItem("Sentiment trend",tabName = "sentiTrend"),
+               menuSubItem("Summary",tabName = "summary")),
       menuItem("Dialogue Charts",tabName ="charts",icon=icon("bar-chart-o"),
                menuSubItem("Episode IV",tabName = "chartepisode4"),
                menuSubItem("Episode V",tabName = "chartepisode5"),
@@ -28,7 +31,7 @@ shinyUI(dashboardPage(skin = "yellow",
                menuSubItem("Episode IV",tabName = "cepisode4"),
                menuSubItem("Episode V",tabName = "cepisode5"),
                menuSubItem("Episode VI",tabName = "cepisode6")),
-      img(id="logo",src="logo4.png")
+      img(id="logo",src="logo6.png")
     )#***********************************************end of sidebar menu******************************************************
   ),
   #begining of the body of the application
@@ -63,7 +66,7 @@ shinyUI(dashboardPage(skin = "yellow",
     ),#*****************************************end of homepage for the dashboard*********************************************
     
     
-    tabItem(tabName="sentiments",
+    tabItem(tabName="negativePositive",
             h1(id="header2","Sentiment Panel"),
             tabBox(id="tab1",title="Negative/Positive words",width = "600",
                    tabPanel("Episode IV",plotOutput("sentiment1")),
