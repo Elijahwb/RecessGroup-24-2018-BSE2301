@@ -40,7 +40,7 @@ shinyUI(dashboardPage(skin = "yellow",
                       #line{color:black;width:600px;}
                       tr{padding:50px;}
                     #black-box{margin-left:220px;width:1200px;}
-                    #tab1,#tab2{width:900px;}
+                    
                      cloud-output{border-radius:5px;}')),
               tags$script(src="projectjs1.js")),
     tabItems(
