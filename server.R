@@ -14,7 +14,7 @@ library(wordcloud)
 library(reshape2)
 library(datasets)
 shinyServer(
-  function(input,output){
+  function(input,output,session){
    
     output$table1<-renderTable({head(members)})
     #creating a vector of words which are stopwords
@@ -93,8 +93,10 @@ shinyServer(
     output$chart1<-renderPlotly({ggplotly(plot)})
     
     ep4characters<-length(unique(ep4$character))
-    ep4character<-unique(ep4$character,"\n")
+    ep4character<-unique(ep4$character)
     output$characters<-renderText({ep4characters})
     output$characterNames<-renderText({ep4character})
+    information<-sessionInfo()
+    
   }
 )

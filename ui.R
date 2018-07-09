@@ -32,19 +32,19 @@ shinyUI(dashboardPage(skin = "yellow",
     tags$head(tags$style(
                 HTML('
                      #logo{margin-left:100px;position:fixed;margin-top:260px;}
-                      #logo2{margin-left:410px;top:-20px;position:relative;}
+                      #logo2{margin-left:340px;top:-20px;position:relative;}
                       #logo:hover{transform:scale(1.03);}
-                      #dashboard{margin-left:300px;color:#343031}
+                      #dashboard{margin-left:230px;color:#343031}
                       #line{color:black;width:600px;}
                       tr{padding:50px;}
-                    #black-box{margin-left:290px;width:1200px;}
+                    #black-box{margin-left:220px;width:1200px;}
                      cloud-output{border-radius:5px;}')),
               tags$script(src="projectjs1.js")),
     tabItems(
       tabItem(tabName="myDashboard",
               img(" ",src="starwars3.png",id="logo2"),
               h1(id="dashboard","Welcome to ",strong("Recess-Group-24")," project"),
-              tags$div(id="black-box",box(title="Group-24 Software Engineer Members!",height=300,status="success",
+              tags$div(id="black-box",box(title="Group-24 Software Engineer Members!",height=250,status="success",
                   tableOutput("table1"))),
               verbatimTextOutput(outputId = "first")
     ),#end of the first dashboard tab information
@@ -72,7 +72,8 @@ shinyUI(dashboardPage(skin = "yellow",
             h1(id="dashboard","Characters' Panel"),
             box("Number of Characters",status="danger",verbatimTextOutput("characters"),
                 h2("Character names"),br(),
-                verbatimTextOutput("characterNames"),background="yellow")
+                verbatimTextOutput("characterNames"),
+                verbatimTextOutput("information"),background="yellow")
     )#end of charts sub menu
   )#end of the body of the application
 )
