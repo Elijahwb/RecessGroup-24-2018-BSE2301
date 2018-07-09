@@ -16,14 +16,8 @@ shinyUI(dashboardPage(skin = "yellow",
   dashboardSidebar(width=350,
     sidebarMenu(
       menuItem("Home",tabName ="myDashboard",icon=icon("th")),
-      menuItem("Sentiment Analysis",tabName ="sentiments",icon=icon("comment"),
-               menuSubItem("Episode IV",tabName = "episode4"),
-               menuSubItem("Episode V",tabName = "episode5"),
-               menuSubItem("Episode VII",tabName = "episode6")),
-      menuItem("Word Clouds",tabName ="wordclouds",icon=icon("cloud"),
-               menuSubItem("Episode IV",tabName = "wcepisode4"),
-               menuSubItem("Episode V",tabName = "wcepisode5"),
-               menuSubItem("Episode VII",tabName = "wcepisode6")),
+      menuItem("Sentiment Analysis",tabName ="sentiments",icon=icon("comment")),
+      menuItem("Word Clouds",tabName ="wordclouds",icon=icon("cloud")),
       menuItem("Charts",tabName ="charts",icon=icon("bar-chart-o"),
                menuSubItem("Episode IV",tabName = "chartepisode4"),
                menuSubItem("Episode V",tabName = "chartepisode5"),
@@ -46,6 +40,7 @@ shinyUI(dashboardPage(skin = "yellow",
                       #line{color:black;width:600px;}
                       tr{padding:50px;}
                     #black-box{margin-left:220px;width:1200px;}
+                    #tab1,#tab2{width:900px;}
                      cloud-output{border-radius:5px;}')),
               tags$script(src="projectjs1.js")),
     tabItems(
@@ -58,16 +53,25 @@ shinyUI(dashboardPage(skin = "yellow",
     ),#end of the first dashboard tab information
     
     
-    tabItem(tabName="episode4",
+    tabItem(tabName="sentiments",
             h1(id="dashboard","Sentiment Panel"),
-            box("Negative",status="info",plotOutput("senti1"),background="yellow")
+            tabBox(id="tab1",title="Negative",
+                   tabPanel("Episode IV",plotOutput("sentiment1")),
+                   tabPanel("Episode V"),
+                   tabPanel("Episode VI"))
     ),#end of sentiments sub menu
     
     
-    tabItem(tabName="wcepisode4",icon=icon("cloud"),
+    tabItem(tabName="wordclouds",icon=icon("cloud"),
             h1(id="dashboard","Wordcloud Panel"),
-            tags$div(id="cloud-output",box("Word cloud for Episode",status="warning",wordcloud2Output(outputId="cloud"),width=500,height=490)
-            )),#end of wordclouds sub menu
+            tabBox(id="tab2",title="Negative",
+                   tabPanel("Episode IV",height="200px",
+                            tags$div(id="cloud-output",
+                                     box("Word cloud for Episode",status="warning",
+                                         wordcloud2Output(outputId="cloud"),width=300)
+                   )),
+                   tabPanel("Episode V"),
+                   tabPanel("Episode VI"))),
     
     
     tabItem(tabName="chartepisode4",
