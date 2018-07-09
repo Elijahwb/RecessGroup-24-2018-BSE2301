@@ -82,7 +82,8 @@ shinyServer(
     ep4character<-unique(ep4$character)
     output$characters4<-renderText({ep4characters})
     output$characterNames4<-renderText({ep4character})
-    #::::::::::::::::::::::::::::::::::::::::::::::::END OF EPISODE IV CONTENTS
+    
+#::::::::::::::::::::::::::::::::::::::::::::::::END OF EPISODE IV CONTENTS:::::::::::::::::::::::::::::::::::::::::::::::::
     
     df_ep5<-createterms(ep5$dialogue)
     output$cloud2<-renderWordcloud2(wordcloud2(df_ep5,color="random-dark",shape ="circle", minSize = 0, gridSize = 0,
@@ -104,6 +105,40 @@ shinyServer(
       labs(x="Character Name" , y="Number of dialogues" , title ="Number of dialogues for each character in Episode 5")
 
     output$chart2<-renderPlotly({ggplotly(plot1)})
+    
+    ep5characters<-length(unique(ep5$character))
+    ep5character<-unique(ep5$character)
+    output$characters5<-renderText({ep5characters})
+    output$characterNames5<-renderText({ep5character})
+  
+#::::::::::::::::::::::::::::::::::::::::::::::::END OF EPISODE V CONTENTS:::::::::::::::::::::::::::::::::::::::::::::::::
+    df_ep6<-createterms(ep6$dialogue)
+    output$cloud3<-renderWordcloud2(wordcloud2(df_ep6,color="random-dark",shape ="circle", minSize = 0, gridSize = 0,
+                                               fontFamily = 'Segoe UI' ))
+    
+    #converting columns to character
+    ep6$character <- as.character(ep6$character)
+    ep6$dialogue <- as.character(ep6$dialogue)
+    
+    p2<-ep6%>%
+      group_by(character)%>%
+      count()%>%
+      ungroup()%>%
+      arrange(desc(n))%>%
+      top_n(20,n)
+    plot2<-ggplot(p2,aes(reorder(character,n),n,fill=character))+
+      geom_col(show.legend = F)+
+      #coord_flip()+
+      labs(x="Character Name" , y="Number of dialogues" , title ="Number of dialogues for each character in Episode 6")
+    
+    output$chart3<-renderPlotly({ggplotly(plot2)})
+    
+    ep6characters<-length(unique(ep6$character))
+    ep6character<-unique(ep6$character)
+    output$characters6<-renderText({ep6characters})
+    output$characterNames6<-renderText({ep6character})
+    
+#::::::::::::::::::::::::::::::::::::::::::::::::END OF EPISODE VI CONTENTS:::::::::::::::::::::::::::::::::::::::::::::::::
   }
 )
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
