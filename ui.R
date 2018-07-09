@@ -21,11 +21,11 @@ shinyUI(dashboardPage(skin = "yellow",
       menuItem("Dialogue Charts",tabName ="charts",icon=icon("bar-chart-o"),
                menuSubItem("Episode IV",tabName = "chartepisode4"),
                menuSubItem("Episode V",tabName = "chartepisode5"),
-               menuSubItem("Episode VII",tabName = "chartepisode6")),
+               menuSubItem("Episode VI",tabName = "chartepisode6")),
       menuItem("Characters in the movie",tabName ="characters",icon=icon("users"),
                menuSubItem("Episode IV",tabName = "cepisode4"),
                menuSubItem("Episode V",tabName = "cepisode5"),
-               menuSubItem("Episode VII",tabName = "cepisode6")),
+               menuSubItem("Episode VI",tabName = "cepisode6")),
       img(id="logo",src="logo2.png")
     )#end of sidebar menu
   ),
@@ -67,18 +67,27 @@ shinyUI(dashboardPage(skin = "yellow",
             tabBox(id="tab2",title="Frequency of words",width = "600",
                    tabPanel("Episode IV",height="200px",
                             tags$div(id="cloud-output",
-                                     box("Most occurring words in Episode IV",status="warning",
+                                     box(h2("Most occurring words in Episode IV"),status="warning",
                                          wordcloud2Output(outputId="cloud1"),width=300)
-                   )),
+                   ),tags$div(id="cloud-output",
+                              box(h2("Least occurring words in Episode IV"),status="warning",
+                                  wordcloud2Output(outputId="cloud1-1"),width=300)
+                   ),br(),br()),
                    tabPanel("Episode V",height="200px",
                             tags$div(id="cloud-output",
-                                     box("Most occurring words in Episode V",status="warning",
+                                     box(h2("Most occurring words in Episode V"),status="warning",
                                          wordcloud2Output(outputId="cloud2"),width=300)
+                            ),tags$div(id="cloud-output",
+                                       box(h2("Least occurring words in Episode V"),status="warning",
+                                           wordcloud2Output(outputId="cloud2-2"),width=300)
                             )),
                    tabPanel("Episode VI",height="200px",
                             tags$div(id="cloud-output",
-                                     box("Most occurring words in Episode VI",status="warning",
+                                     box(h2("Most occurring words in Episode VI"),status="warning",
                                          wordcloud2Output(outputId="cloud3"),width=300)
+                            ),tags$div(id="cloud-output",
+                                       box(h2("Least occurring words in Episode VI"),status="warning",
+                                           wordcloud2Output(outputId="cloud3-2"),width=300)
                             ))),br(),br(),br(),br()),
     
     
