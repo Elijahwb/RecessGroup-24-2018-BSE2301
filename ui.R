@@ -55,7 +55,7 @@ shinyUI(dashboardPage(skin = "yellow",
     
     tabItem(tabName="sentiments",
             h1(id="dashboard","Sentiment Panel"),
-            tabBox(id="tab1",title="Negative",
+            tabBox(id="tab1",title="Negative",width = "600",
                    tabPanel("Episode IV",plotOutput("sentiment1")),
                    tabPanel("Episode V"),
                    tabPanel("Episode VI"))
@@ -64,7 +64,7 @@ shinyUI(dashboardPage(skin = "yellow",
     
     tabItem(tabName="wordclouds",icon=icon("cloud"),
             h1(id="dashboard","Wordcloud Panel"),
-            tabBox(id="tab2",title="Negative",
+            tabBox(id="tab2",title="Negative",width = "600",
                    tabPanel("Episode IV",height="200px",
                             tags$div(id="cloud-output",
                                      box("Most occurring words in Episode IV",status="warning",
