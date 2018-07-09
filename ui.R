@@ -46,7 +46,7 @@ shinyUI(dashboardPage(skin = "yellow",
                       #header2{margin-left:330px;color:#00a65a;margin-top:-50px;position:relative;}
                       #header3{margin-left:330px;color:#2c88bd;margin-top:-50px;position:relative;}
                       #header4{margin-left:330px;color:#2c88bd;margin-top:-50px;position:relative;}
-                      #header5{margin-left:330px;color:#f5055d;margin-top:50px;position:relative;}
+                      #header5{margin-left:330px;color:#00a65a;margin-top:50px;position:relative;}
                       #line{color:black;width:600px;}
                       tr{padding:50px;}
                     #black-box{margin-left:220px;width:1200px;margin-top:-10px;position:relative;}
