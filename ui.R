@@ -9,7 +9,7 @@ shinyUI(dashboardPage(skin = "yellow",
     dropdownMenu(type = "tasks",
                  badgeStatus = "success",
                  taskItem(value = 85, color = "green","Documentation of the Project"),
-                 taskItem(value = 45, color = "yellow", "Project deployment"),
+                 taskItem(value = 80, color = "yellow", "Project deployment"),
                  taskItem(value = 75, color = "red","Overall project")
                 )#end of tasks drop down
   ),#***********************************************end of Notifications******************************************************
@@ -40,15 +40,16 @@ shinyUI(dashboardPage(skin = "yellow",
                       #logo2{margin-left:340px;top:-105px;position:relative;}
                       #logo:hover{transform:scale(1.03);}
                       #header1{margin-left:230px;color:#343031;margin-top:-70px;position:relative;}
-                      #header2{margin-left:330px;color:#343031;margin-top:-50px;position:relative;}
-                      #header3{margin-left:330px;color:#343031;margin-top:-50px;position:relative;}
-                      #header4{margin-left:330px;color:#343031;margin-top:-50px;position:relative;}
-                      #header5{margin-left:330px;color:#343031;margin-top:-50px;position:relative;}
+                      #header2{margin-left:330px;color:#00a65a;margin-top:-50px;position:relative;}
+                      #header3{margin-left:330px;color:#2c88bd;margin-top:-50px;position:relative;}
+                      #header4{margin-left:330px;color:#2c88bd;margin-top:-50px;position:relative;}
+                      #header5{margin-left:330px;color:#f5055d;margin-top:50px;position:relative;}
                       #line{color:black;width:600px;}
                       tr{padding:50px;}
                     #black-box{margin-left:220px;width:1200px;margin-top:-10px;position:relative;}
                      #cloud-output{border-radius:5px;}
-                     #gpIcon{margin-left:900px;margin-top:-42px;}')),
+                     #gpIcon{margin-left:900px;margin-top:-42px;}
+                     #center{margin-left:260px;position:relative;width:100%;}')),
     #************************************************end of the styles sheet**************************************************
               tags$script(src="projectjs1.js")),
     tags$img(id="gpIcon",src="logo2-6.png"),
@@ -64,7 +65,7 @@ shinyUI(dashboardPage(skin = "yellow",
     
     tabItem(tabName="sentiments",
             h1(id="header2","Sentiment Panel"),
-            tabBox(id="tab1",title="Negative/Positive",width = "600",
+            tabBox(id="tab1",title="Negative/Positive words",width = "600",
                    tabPanel("Episode IV",plotOutput("sentiment1")),
                    tabPanel("Episode V"),
                    tabPanel("Episode VI"))
@@ -117,33 +118,33 @@ shinyUI(dashboardPage(skin = "yellow",
             box("chart-1",status="warning",plotlyOutput("chart1"),width="600",height="500",background = "yellow")
     ),tabItem(tabName="chartepisode5",
               h1(id="header4","Charts Panel"),
-              box("chart-1",status="warning",plotlyOutput("chart2"),width="600",height="500",background = "yellow")
+              box("chart-2",status="warning",plotlyOutput("chart2"),width="600",height="500",background = "yellow")
     ),tabItem(tabName="chartepisode6",
               h1(id="header4","Charts Panel"),
-              box("chart-1",status="warning",plotlyOutput("chart3"),width="600",height="500",background = "yellow")
+              box("chart-3",status="warning",plotlyOutput("chart3"),width="600",height="500",background = "yellow")
     ),#*************************************end of dialogue charts sub-items**************************************************
     
     
     tabItem(tabName="cepisode4",
             h1(id="header5","Characters' Panel"),
-            box("Number of Characters",status="danger",verbatimTextOutput("characters4"),
+            tags$div(id="center",box("Number of Characters in Episode IV",status="danger",verbatimTextOutput("characters4"),
                 h2("Character names"),br(),
                 verbatimTextOutput("characterNames4"),
-                verbatimTextOutput("information4"),background="yellow")
+                verbatimTextOutput("information4"),background="yellow"))
     ),
     tabItem(tabName="cepisode5",
             h1(id="header5","Characters' Panel"),
-            box("Number of Characters",status="danger",verbatimTextOutput("characters5"),
+            tags$div(id="center",box("Number of Characters in Episode V",status="danger",verbatimTextOutput("characters5"),
                 h2("Character names"),br(),
                 verbatimTextOutput("characterNames5"),
-                verbatimTextOutput("information5"),background="yellow")
+                verbatimTextOutput("information5"),background="yellow"))
     ),
     tabItem(tabName="cepisode6",
             h1(id="header5","Characters' Panel"),
-            box("Number of Characters",status="danger",verbatimTextOutput("characters6"),
+            tags$div(id="center",box("Number of Characters in Episode VI",status="danger",verbatimTextOutput("characters6"),
                 h2("Character names"),br(),
                 verbatimTextOutput("characterNames6"),
-                verbatimTextOutput("information6"),background="yellow")
+                verbatimTextOutput("information6"),background="yellow"))
     )#*******************************************end of characters sub-items**************************************************
   )#***************************************************end of tab items*******************************************************
 )#*************************************************end of dashboard body******************************************************
