@@ -20,10 +20,22 @@ shinyUI(dashboardPage(skin = "yellow",
   dashboardSidebar(width=350,
     sidebarMenu(
       menuItem("Home",tabName ="myDashboard",icon=icon("th")),
-      menuItem("Sentiment Analysis",tabName ="sentiments",icon=icon("comment")),
-      menuItem("Word Clouds",tabName ="wordclouds",icon=icon("cloud")),
-      menuItem("Charts",tabName ="charts",icon=icon("bar-chart-o")),
-      menuItem("Characters in the movie",tabName ="characters",icon=icon("users")),
+      menuItem("Sentiment Analysis",tabName ="sentiments",icon=icon("comment"),
+               menuSubItem("Episode IV",tabName = "episode4"),
+               menuSubItem("Episode V",tabName = "episode5"),
+               menuSubItem("Episode VII",tabName = "episode6")),
+      menuItem("Word Clouds",tabName ="wordclouds",icon=icon("cloud"),
+               menuSubItem("Episode IV",tabName = "wcepisode4"),
+               menuSubItem("Episode V",tabName = "wcepisode5"),
+               menuSubItem("Episode VII",tabName = "wcepisode6")),
+      menuItem("Charts",tabName ="charts",icon=icon("bar-chart-o"),
+               menuSubItem("Episode IV",tabName = "chartepisode4"),
+               menuSubItem("Episode V",tabName = "chartepisode5"),
+               menuSubItem("Episode VII",tabName = "chartepisode6")),
+      menuItem("Characters in the movie",tabName ="characters",icon=icon("users"),
+               menuSubItem("Episode IV",tabName = "cepisode4"),
+               menuSubItem("Episode V",tabName = "cepisode5"),
+               menuSubItem("Episode VII",tabName = "cepisode6")),
       img(id="logo",src="logo2.png")
     )#end of sidebar menu
   ),
@@ -50,25 +62,25 @@ shinyUI(dashboardPage(skin = "yellow",
     ),#end of the first dashboard tab information
     
     
-    tabItem(tabName="sentiments",
+    tabItem(tabName="episode4",
             h1(id="dashboard","Sentiment Panel"),
             box("Negative",status="info",plotOutput("senti1"),background="yellow")
     ),#end of sentiments sub menu
     
     
-    tabItem(tabName="wordclouds",icon=icon("cloud"),
+    tabItem(tabName="wcepisode4",icon=icon("cloud"),
             h1(id="dashboard","Wordcloud Panel"),
             tags$div(id="cloud-output",box("Word cloud for Episode",status="warning",wordcloud2Output(outputId="cloud"),width=500,height=490)
             )),#end of wordclouds sub menu
     
     
-    tabItem(tabName="charts",
+    tabItem(tabName="chartepisode4",
             h1(id="dashboard","Charts Panel"),
             box("chart-1",status="warning",plotlyOutput("chart1"),width="600",height="500",background = "yellow")
     ),#end of charts sub menu
     
     
-    tabItem(tabName="characters",
+    tabItem(tabName="cepisode4",
             h1(id="dashboard","Characters' Panel"),
             box("Number of Characters",status="danger",verbatimTextOutput("characters"),
                 h2("Character names"),br(),
