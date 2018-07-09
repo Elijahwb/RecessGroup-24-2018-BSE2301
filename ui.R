@@ -28,7 +28,7 @@ shinyUI(dashboardPage(skin = "yellow",
                menuSubItem("Episode IV",tabName = "cepisode4"),
                menuSubItem("Episode V",tabName = "cepisode5"),
                menuSubItem("Episode VI",tabName = "cepisode6")),
-      img(id="logo",src="logo2.png")
+      img(id="logo",src="logo4.png")
     )#***********************************************end of sidebar menu******************************************************
   ),
   #begining of the body of the application
@@ -36,16 +36,18 @@ shinyUI(dashboardPage(skin = "yellow",
     #******************************************beginning of the styles sheet**************************************************
     tags$head(tags$style(
                 HTML('
-                     #logo{margin-left:100px;position:fixed;margin-top:260px;}
-                      #logo2{margin-left:340px;top:-20px;position:relative;}
+                     #logo{margin-left:80px;position:fixed;margin-top:170px;}
+                      #logo2{margin-left:340px;top:-105px;position:relative;}
                       #logo:hover{transform:scale(1.03);}
                       #dashboard{margin-left:230px;color:#343031}
                       #line{color:black;width:600px;}
                       tr{padding:50px;}
                     #black-box{margin-left:220px;width:1200px;}
-                     cloud-output{border-radius:5px;}')),
+                     #cloud-output{border-radius:5px;}
+                     #gpIcon{margin-left:900px;margin-top:-42px;}')),
     #************************************************end of the styles sheet**************************************************
               tags$script(src="projectjs1.js")),
+    tags$img(id="gpIcon",src="logo2-4.png"),
     tabItems(
       tabItem(tabName="myDashboard",
               img(" ",src="starwars3.png",id="logo2"),
