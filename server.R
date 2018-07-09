@@ -58,7 +58,7 @@ shinyServer(
       return(df)
     }
     df<-createterms(ep4$dialogue)
-    output$cloud<-renderWordcloud2(wordcloud2(df,color="random-dark",shape ="circle", minSize = 0, gridSize = 0,
+    output$cloud1<-renderWordcloud2(wordcloud2(df,color="random-dark",shape ="circle", minSize = 0, gridSize = 0,
                                               fontFamily = 'Segoe UI' ))
     
     #converting columns to character

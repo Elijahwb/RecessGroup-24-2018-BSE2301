@@ -68,10 +68,18 @@ shinyUI(dashboardPage(skin = "yellow",
                    tabPanel("Episode IV",height="200px",
                             tags$div(id="cloud-output",
                                      box("Most occurring words in Episode IV",status="warning",
-                                         wordcloud2Output(outputId="cloud"),width=300)
+                                         wordcloud2Output(outputId="cloud1"),width=300)
                    )),
-                   tabPanel("Episode V"),
-                   tabPanel("Episode VI")),br(),br(),br(),br()),
+                   tabPanel("Episode V",height="200px",
+                            tags$div(id="cloud-output",
+                                     box("Most occurring words in Episode V",status="warning",
+                                         wordcloud2Output(outputId="cloud2"),width=300)
+                            )),
+                   tabPanel("Episode VI",height="200px",
+                            tags$div(id="cloud-output",
+                                     box("Most occurring words in Episode VI",status="warning",
+                                         wordcloud2Output(outputId="cloud3"),width=300)
+                            ))),br(),br(),br(),br()),
     
     
     tabItem(tabName="chartepisode4",
