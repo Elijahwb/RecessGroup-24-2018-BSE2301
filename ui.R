@@ -59,7 +59,7 @@ shinyUI(dashboardPage(skin = "yellow",
                    tabPanel("Episode IV",plotOutput("sentiment1")),
                    tabPanel("Episode V"),
                    tabPanel("Episode VI"))
-    ),#end of sentiments sub menu
+    ),#end of sentiments tabsets
     
     
     tabItem(tabName="wordclouds",icon=icon("cloud"),
@@ -71,13 +71,13 @@ shinyUI(dashboardPage(skin = "yellow",
                                          wordcloud2Output(outputId="cloud"),width=300)
                    )),
                    tabPanel("Episode V"),
-                   tabPanel("Episode VI"))),
+                   tabPanel("Episode VI")),br(),br(),br(),br()),
     
     
     tabItem(tabName="chartepisode4",
             h1(id="dashboard","Charts Panel"),
             box("chart-1",status="warning",plotlyOutput("chart1"),width="600",height="500",background = "yellow")
-    ),#end of charts sub menu
+    ),#end of charts tabsets
     
     
     tabItem(tabName="cepisode4",
