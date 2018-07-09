@@ -67,7 +67,7 @@ shinyUI(dashboardPage(skin = "yellow",
             tabBox(id="tab2",title="Negative",
                    tabPanel("Episode IV",height="200px",
                             tags$div(id="cloud-output",
-                                     box("Word cloud for Episode",status="warning",
+                                     box("Most occurring words in Episode IV",status="warning",
                                          wordcloud2Output(outputId="cloud"),width=300)
                    )),
                    tabPanel("Episode V"),
