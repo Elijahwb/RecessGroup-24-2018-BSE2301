@@ -1,8 +1,4 @@
-#user interface libraries
-library(shiny)
-library(shinydashboard)
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-
 shinyUI(dashboardPage(skin = "yellow",
   dashboardHeader(title = "STAR-WARS Dashboard",titleWidth=350, 
     dropdownMenu(type = "messages",
@@ -56,7 +52,7 @@ shinyUI(dashboardPage(skin = "yellow",
       tabItem(tabName="myDashboard",
               img(" ",src="starwars3.png",id="logo2"),
               h1(id="dashboard","Welcome to ",strong("Recess-Group-24")," project"),
-              tags$div(id="black-box",box(title="Group-24 Software Engineer Members!",height=250,status="success",
+              tags$div(id="black-box",box(title="Group-24 Software Engineer Members!",height=250,status="warning",
                   tableOutput("table1"))),
               verbatimTextOutput(outputId = "first")
     ),#end of the first dashboard tab information
