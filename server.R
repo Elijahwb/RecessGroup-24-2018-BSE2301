@@ -80,10 +80,30 @@ shinyServer(
     
     ep4characters<-length(unique(ep4$character))
     ep4character<-unique(ep4$character)
-    output$characters<-renderText({ep4characters})
-    output$characterNames<-renderText({ep4character})
-    information<-sessionInfo()
+    output$characters4<-renderText({ep4characters})
+    output$characterNames4<-renderText({ep4character})
+    #::::::::::::::::::::::::::::::::::::::::::::::::END OF EPISODE IV CONTENTS
     
+    df_ep5<-createterms(ep5$dialogue)
+    output$cloud2<-renderWordcloud2(wordcloud2(df_ep5,color="random-dark",shape ="circle", minSize = 0, gridSize = 0,
+                                               fontFamily = 'Segoe UI' ))
+    
+    #converting columns to character
+    ep5$character <- as.character(ep5$character)
+    ep5$dialogue <- as.character(ep5$dialogue)
+    
+    p1<-ep5%>%
+      group_by(character)%>%
+      count()%>%
+      ungroup()%>%
+      arrange(desc(n))%>%
+      top_n(20,n)
+    plot1<-ggplot(p1,aes(reorder(character,n),n,fill=character))+
+      geom_col(show.legend = F)+
+      #coord_flip()+
+      labs(x="Character Name" , y="Number of dialogues" , title ="Number of dialogues for each character in Episode 5")
+
+    output$chart2<-renderPlotly({ggplotly(plot1)})
   }
 )
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::

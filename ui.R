@@ -85,16 +85,36 @@ shinyUI(dashboardPage(skin = "yellow",
     tabItem(tabName="chartepisode4",
             h1(id="dashboard","Charts Panel"),
             box("chart-1",status="warning",plotlyOutput("chart1"),width="600",height="500",background = "yellow")
-    ),#end of charts tabsets
+    ),tabItem(tabName="chartepisode5",
+              h1(id="dashboard","Charts Panel"),
+              box("chart-1",status="warning",plotlyOutput("chart2"),width="600",height="500",background = "yellow")
+    ),tabItem(tabName="chartepisode6",
+              h1(id="dashboard","Charts Panel"),
+              box("chart-1",status="warning",plotlyOutput("chart3"),width="600",height="500",background = "yellow")
+    ),#end of charts sub menu
     
     
     tabItem(tabName="cepisode4",
             h1(id="dashboard","Characters' Panel"),
-            box("Number of Characters",status="danger",verbatimTextOutput("characters"),
+            box("Number of Characters",status="danger",verbatimTextOutput("characters4"),
                 h2("Character names"),br(),
-                verbatimTextOutput("characterNames"),
-                verbatimTextOutput("information"),background="yellow")
-    )#end of charts sub menu
+                verbatimTextOutput("characterNames4"),
+                verbatimTextOutput("information4"),background="yellow")
+    ),
+    tabItem(tabName="cepisode5",
+            h1(id="dashboard","Characters' Panel"),
+            box("Number of Characters",status="danger",verbatimTextOutput("characters5"),
+                h2("Character names"),br(),
+                verbatimTextOutput("characterNames5"),
+                verbatimTextOutput("information5"),background="yellow")
+    ),
+    tabItem(tabName="cepisode6",
+            h1(id="dashboard","Characters' Panel"),
+            box("Number of Characters",status="danger",verbatimTextOutput("characters6"),
+                h2("Character names"),br(),
+                verbatimTextOutput("characterNames6"),
+                verbatimTextOutput("information6"),background="yellow")
+    )#end of characters sub menu
   )#end of the body of the application
 )
 ))
