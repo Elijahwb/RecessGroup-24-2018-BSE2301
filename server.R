@@ -171,9 +171,10 @@ shinyServer(
     output$chart3<-renderPlotly({ggplotly(plot2)})
     
     ep6characters<-length(unique(ep6$character))
-    ep6character<-unique(ep6$character)
+    ep6character<-as.character(unique(ep6$character))
+    ep6character1<-paste(ep6character,sep = ".")
     output$characters6<-renderText({ep6characters})
-    output$characterNames6<-renderText({ep6character})
+    output$characterNames6<-renderText({ep6character1})
     
 #::::::::::::::::::::::::::::::::::::::::::::::::END OF EPISODE VI CONTENTS:::::::::::::::::::::::::::::::::::::::::::::::::
   }
