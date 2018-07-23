@@ -2,7 +2,7 @@
 library(shiny)
 library(shinydashboard)
 #analysis libraries
-library(DT)
+#library(DT)
 library(plotly)
 library(wordcloud2)
 library(ggplot2) # Data visualization
