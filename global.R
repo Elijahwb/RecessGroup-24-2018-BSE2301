@@ -2,7 +2,10 @@
 library(shiny)
 library(shinydashboard)
 #analysis libraries
-#library(DT)
+library(DT)
+library(radarchart)
+library(RWeka)
+library(tidyverse)
 library(plotly)
 library(wordcloud2)
 library(ggplot2) # Data visualization
@@ -14,6 +17,7 @@ library(tm)
 library(wordcloud)
 library(reshape2)
 library(stringr)
+library(RColorBrewer)
 
 #load the datasets that are going to be used
 members<-read.table('C:/Users/brand/OneDrive/Desktop/Recess Project Git/RecessGroup-24-2018-BSE2301/datasets/names.csv',sep=",",header=TRUE )
